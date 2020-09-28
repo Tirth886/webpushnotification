@@ -10,7 +10,7 @@ app.get('/', function(req, res) {
 app.use(express.static(__dirname));
 
 io.on('connection', function(socket) {
-    console.log("connect")
+    console.log("connect", socket.id)
     socket.on('new_notification', function(data) {
         console.log(data.title, data.message);
         io.sockets.emit('show_notification', {
